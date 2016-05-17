@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>文件搜索</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -21,6 +21,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+  
+  <jsp:useBean id="SearchBean" class ="org.gk.Javabean.SearchBean" scope="page"/>
+  <jsp:setProperty property="*" name = "SearchBean"/>
+  
+  
+  	
+   	<table align="center" width="80%" cellpadding="0" cellspacing="0" border =1 >
+		<tr>
+			<td colspan="5">
+				<form action="index.jsp" method="post">
+					输入关键字:<input type="text" size="20" name="serachContent"/>
+					<input type="submit" value="搜索"/>
+				</form>
+			</td>		
+		</tr>
+		
+		<tr>
+			<td>文件名称</td>
+			<td colspan="2">文件内容</td>
+			<td>文件路径</td>
+			<td>最后修改</td>
+			
+		</tr>
+		
+			result: ${SearchBean.resultEntries}
+		
+	</table>
+
+   	
+   	
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+

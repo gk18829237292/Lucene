@@ -28,7 +28,10 @@ public class TestIndexUtils {
 		iu.makeAllIndex("F:\\my_paper\\别人家的论文\\test\\1.pdf",
 				"F:\\my_paper\\别人家的论文\\test\\4.pdf",
 				"F:\\my_paper\\别人家的论文\\test\\5.pdf",
-				"F:\\my_paper\\别人家的论文\\test\\6.pdf"
+				"F:\\my_paper\\别人家的论文\\test\\6.pdf",
+				"D:\\my_eclipse\\my_javaWEB1\\LuceneProject\\docTest\\达赖在日本声称解决“西藏问题”可仿效欧盟.docx",
+				"D:\\my_eclipse\\my_javaWEB1\\LuceneProject\\docTest\\日本跨境电商订单量急剧缩水 .docx",
+				"D:\\my_eclipse\\my_javaWEB1\\LuceneProject\\docTest\\Cheng Xu Yuan Mian Shi Bao Dian.pdf"
 				);
 		
 		iu.commit();
@@ -60,7 +63,7 @@ public class TestIndexUtils {
 		MultiFieldQueryParser queryParser = new MultiFieldQueryParser(Version.LUCENE_35, new String[]{EnvironmentEntry.FILENAME,EnvironmentEntry.FILECONTENT}, iu.getMyAnalyzer());
 		
 		try {
-			iu.searchWithHighLigter(queryParser.parse("日本"), 10);
+			System.out.println(iu.searchWithHighLigter(queryParser.parse("日本"), 10));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

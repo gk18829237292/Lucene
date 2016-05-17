@@ -18,4 +18,9 @@ public class TestIndexService {
 		IndexService service = new IndexService();
 		service.deleteBook("D:\\my_eclipse\\my_javaWEB1\\LuceneProject\\books\\sqsxfree_0.4_beta11.5.zip");
 	}
+	
+	@Test
+	public void testQuery(){
+		System.out.println(IndexService.queryBooks("日本"));
+	}
 }

@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.List;
 
 import org.apache.commons.io.FilenameUtils;
@@ -32,6 +33,7 @@ import org.apache.lucene.search.highlight.Fragmenter;
 import org.apache.lucene.search.highlight.Highlighter;
 import org.apache.lucene.search.highlight.InvalidTokenOffsetsException;
 import org.apache.lucene.search.highlight.QueryScorer;
+import org.apache.lucene.search.highlight.SimpleHTMLFormatter;
 import org.apache.lucene.search.highlight.SimpleSpanFragmenter;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
@@ -303,7 +305,9 @@ public class IndexUtils {
 	private String makeHighLight(Query query,String fieldName,String text){
 		QueryScorer scorer = new QueryScorer(query);
 		Fragmenter fragmenter = new SimpleSpanFragmenter(scorer);
-		Highlighter highlighter = new Highlighter(scorer);
+		SimpleHTMLFormatter formatter = new SimpleHTMLFormatter("<b color =red>", "</b>");
+		Highlighter highlighter = new Highlighter(formatter,scorer);
+		
 		highlighter.setTextFragmenter(fragmenter);
 		
 		String str = null;
